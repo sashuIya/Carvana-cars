@@ -1,1 +1,5 @@
 *.swp
+*.py.swo
+*__pycache__*
+*.gz
+*.tar

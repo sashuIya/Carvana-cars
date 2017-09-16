@@ -84,7 +84,6 @@ class UNet(nn.Module):
         up_out_channels = list(reversed(down_out_channels))
 
         self.layers = nn.ModuleList()
-        print(self.layers)
         in_channels = base_in_channels
 
         # Going down:
@@ -100,7 +99,7 @@ class UNet(nn.Module):
 
         # Going up:
         for out_channels in up_out_channels:
-            self.layers.append(nn.UpsamplingNearest2d(scale_factor=2))
+            self.layers.append(nn.Upsample(scale_factor=2))
             self.layers.append(UNetModule(in_channels, out_channels, num_layers=3))
             in_channels = out_channels
 
